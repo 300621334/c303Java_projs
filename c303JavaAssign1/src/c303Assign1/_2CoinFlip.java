@@ -15,8 +15,8 @@ public class _2CoinFlip implements Runnable
 	//constructor will create 5 threads
 	public _2CoinFlip()
 	{
-		//arrange 5 threads
-		ExecutorService tasks = Executors.newFixedThreadPool(5);
+		//arrange 10 threads
+		ExecutorService tasks = Executors.newFixedThreadPool(10);
 		
 		//execute 5 threads inside constructor
 		for (int i = 0; i < 5; i++) 

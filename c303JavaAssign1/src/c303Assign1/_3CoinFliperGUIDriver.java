@@ -23,16 +23,17 @@ public class _3CoinFliperGUIDriver extends JFrame
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new GridLayout(5, 1));
 		
-		//Arrange 5 threads
-		ExecutorService tasks = Executors.newFixedThreadPool(5);
+		//Arrange 10 threads
+		ExecutorService tasks = Executors.newFixedThreadPool(10);
 		
 		//create 5 labels & place them inside JFrame
 		for (int i = 0; i < 5; i++) 
 		{
 			JLabel label = new JLabel("Label" + i);//Label1, Label2 etc
-			label.setFont(new Font("SansSerif", Font.PLAIN, 30));
+			//optional => set font or use default
+			//label.setFont(new Font("SansSerif", Font.PLAIN, 30));
 			
-			//Pass label to coin-flipper class
+			//Pass label to coin-flipper class w modifies label
 			tasks.execute(new _3CoinFliperGUI(label, i+1));
 			
 			//Place label in JFrame

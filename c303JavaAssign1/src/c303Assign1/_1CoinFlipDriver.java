@@ -14,17 +14,17 @@ public class _1CoinFlipDriver
 {
 		public static void main(String[] args) 
 		{
-			//arrange 5 threads
-			ExecutorService tasks = Executors.newFixedThreadPool(5);
+			//arrange 10 threads - about twice as many as tasks
+			ExecutorService tasks = Executors.newFixedThreadPool(10);
 			
-			//run 5 threads
+			//run 5 threads - remaining 5  threads are there bcoz run() fn of ea exe in its own thread 
 			tasks.execute(new _1CoinFlip());//Thread #1
 			tasks.execute(new _1CoinFlip());//2
 			tasks.execute(new _1CoinFlip());//3
 			tasks.execute(new _1CoinFlip());//4
 			tasks.execute(new _1CoinFlip());//5
 			
-			//terminate threads
+			//stop accepting any more tasks
 			tasks.shutdown();
 		}
 }
