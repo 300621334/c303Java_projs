@@ -21,10 +21,7 @@ public class FileCounter extends HttpServlet
 	FileDao dao;//data access obj (to access a file)
        
 //constructor - works wout it!
-/*    public FileCounter() 
-    {
-        super();
-    }*/
+/*    public FileCounter() {super();}*/
 	
 //when server starts, before ath else, this init() is run
     	@Override
