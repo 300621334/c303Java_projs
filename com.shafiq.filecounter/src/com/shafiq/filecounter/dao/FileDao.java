@@ -37,13 +37,15 @@ private static final String fileName = "FileCounter.initial";//where site-visit-
 			if(!file.exists())
 			{
 				file.createNewFile();
-				printWriter.println(0);
+				printWriter.println(0);//cud do same w fileWriter, but PrintWriter flushed auto & alos don't throw exceptions 
+				//fileWriter.write(0); 
+				//fileWriter.flush();
 			}
 			if (printWriter != null) printWriter.close();
 			
 			//now read count from file
-			fileReader = new FileReader(fileName);//which file to read
-			bufferedReader = new BufferedReader(fileReader);//opens file to read
+			fileReader = new FileReader(fileName);//reads the file chars
+			bufferedReader = new BufferedReader(fileReader);//for efficiency sake, use buffer instead of reading WHOLE file at once
 			String line = bufferedReader.readLine();
 			count = Integer.parseInt(line);
 			

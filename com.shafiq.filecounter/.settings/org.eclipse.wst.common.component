@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="com.shafiq.filecounter">
+    <wb-module deploy-name="com.shafiq.tuts">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="com.shafiq.filecounter"/>
-        <property name="java-output-path" value="/com.shafiq.filecounter/build/classes"/>
+        <property name="java-output-path" value="/com.shafiq.tuts/build/classes"/>
+        <property name="context-root" value="com.shafiq.tuts"/>
     </wb-module>
 </project-modules>
