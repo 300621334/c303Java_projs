@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1" />
+<meta name="description" content="Tutorials from www.vogella.com!" />
+
+<title>Insert title here</title>
+<script type="text/javascript">
+//shortHand frequently used fn
+function cl(msg){console.log(msg);}
+function dw(txt){document.writeln(txt);}
+
+//actual fns
+function hideShow()
+{
+	let allTags = document.getElementsByTagName('*');
+	cl('allTags gathered');
+		
+	for(let i=0; i<allTags.length; i++)
+		{
+		cl('entered for loop');
+		if(allTags[i].className == 'toggleMyDisplay')
+			{
+				cl('outer if');
+				if(allTags[i].style.display == "none")
+					{
+					cl('inner if');
+					allTags[i].style.display = "";
+					cl(`display set to \"\" for class \"${allTags[i].className}\"`);
+					}//inner if
+				else
+					{
+						cl('inner else');
+						allTags[i].style.display = "none";
+						cl('display set to NONE');
+					}//inner else
+			}//outer if
+		}//for loop
+}
+//Create a dynamic link
+function toDiggUrl()//http://www.vogella.com/tutorials/JavaScript/article.html#examples_manipulation
+{
+    var result = "http://digg.com/submit?phase=2&url=";
+    result += encodeURIComponent(location.href);
+    result += "&title=";
+    result += encodeURIComponent(document.title);
+    result += "&topic=programming";
+    window.location = result;
+}
+//Reading META Tags - NOT WORKING!!! //http://www.vogella.com/tutorials/JavaScript/article.html#javascripthtml_meta
+function getMetaDescription() 
+{
+	cl('enteren getMetaDescription()');
+		var metaElements = document.all?
+				document.all.tags('META'):
+					document.getElementsByTagName?
+							document.getElementsByTagName('META'):
+								new Array();
+		var metaKeyWords = new Array();
+		var k = 0;
+
+		for(let i = 0; i<metaElements.length; i++)
+			{
+			cl('at least one meta tag found. Now looking for name"description inside meta tags"');
+			dw(metaElements.length);
+			dw(metaElements[i].name);
+				if (metaElements[i].name == 'description')
+				{
+					cl('meta tags w name="description" found');
+					metaKeyWords[k++] = metaElements[i].content;
+				}
+				else
+					{
+						cl('no META found!!! with name="description"');					
+					}
+			return metaKeyWords;
+			}
+}
+//form
+function updateForm()
+{
+	//save URL in hidden field
+	document.forms["myform"].elements["webpage"].value = encodeURIComponent(location.href);
+	//chk if user field is empty
+	var user = document.forms["myform"].elements["user"].value;
+	if(user == null || user == "")//user field is empty
+	{
+	cl('user is empty');
+		var oldNode = document.getElementById('replace').firstChild;//get ref to txt(node) inside div
+		var newNode = document.createTextNode('Please fill out all fields!');
+		document.getElementById('replace').replaceChild(newNode, oldNode);
+		
+		
+		return false;//halts sending form to action=""
+	}//if ends
+			
+			return true;//form submitted
+}
+</script>
+
+</head>
+<body>
+<form onsubmit="return updateForm()" id="myform" NAME="myform" action="" method="get">
+		<input type="hidden" name="webpage" />
+		<table>
+		<tr>
+			<td align="right">User (*)</td>
+			<td><input type="text" name='user' size="30" maxlength="30"></td>
+		</tr>
+		
+		<tr>
+			<td align="right">email (*)</td>
+			<td><input type="email" name='email' size="30" maxlength="30"></td>
+	
+		</tr>
+		<tr>
+				<td></td>
+				<td><input type="submit" value="Submit"></td>
+		</tr>
+		<tr>
+		<td colspan="2">
+			<span id="replace">(*) are required.</span>
+		</td>
+		</tr>
+		</table>
+	</form>
+	
+	
+	
+<input type='text' value='clk me' onclick='dw("called fn w onclick")' /><br/>
+
+<div class='toggleMyDisplay'>
+I will hide &amp; show on btn clk...
+</div>
+<b>Here we write some information to the HTML page.</b>
+<BR>
+Write the current URL to this HTML document
+<script type="text/javascript">
+document.writeln(location.href);
+</script>
+
+<BR>
+<BR>
+<b>Encodes the current URL so that special characters will get
+encoded</b>
+<BR>
+<script type="text/javascript">
+document.writeln(encodeURIComponent(location.href))
+</script>
+
+
+<BR>
+<BR>
+<b>More fancy stuff, evalute page information and send this to a
+social bookmarking website (digg)</b>
+<BR>
+
+
+<input type='button' value='Hide / Show' onclick='hideShow()' /><br/>
+
+
+<table cellpadding="10" cellspacing="0" width="100%">
+    <tr>
+        <td width="320">If you press the hyperlink below the JavaScript
+        will run <BR>
+        <a href="javascript: toDiggUrl()">Digg this site</a></td>
+    </tr>
+</table>
+
+<br/>
+<script type="text/javascript">
+document.write(getMetaDescription());
+</script>
+<br/>
+
+
+ <script src="myJsFile.js"></script> 
+</body>
+</html>
