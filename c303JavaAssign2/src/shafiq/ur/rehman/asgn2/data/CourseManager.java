@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import shafiq.ur.rehman.asgn2.dto.Course;
 import shafiq.ur.rehman.asgn2.others.CourseNotFoundException;
@@ -13,7 +15,7 @@ import shafiq.ur.rehman.asgn2.others.DuplicateCourseException;
 public class CourseManager implements CourseCatalog {
 
 	//to keep unique course codes, I choose map collection
-	private static Map<String, Course> allCoursesMap = new HashMap<String, Course>();
+	private static ConcurrentMap<String, Course> allCoursesMap = new ConcurrentHashMap<String, Course>();
 	
 	@Override
 	public Course getCourse(String courseCode) throws CourseNotFoundException {

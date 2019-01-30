@@ -44,7 +44,8 @@ public class LocalTester {
 	
 	public static void main(String[] args) {
 		buildCatalog();
-		CourseCatalog cc = new CourseManager();
+		//CourseCatalog cc = new CourseManager();
+		CourseCatalog cc = new CourseManager().getInstance();
 		System.out.println();
 		System.out.println("Testing getting a course by code");
 	try {
