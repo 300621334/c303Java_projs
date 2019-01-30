@@ -63,15 +63,16 @@ public class Course implements Serializable {
 	//additional methods
 	@Override
 	public String toString() {
-		StringBuilder stringBuilder = new StringBuilder();
+		//StringBuilder stringBuilder = new StringBuilder();
 		String string = 
-				String.format("Course Code: %s \n" 
+				String.format("\n"
+							+ "Course Code: %s \n" 
 							+ "Course Title: %s \n"
 							+ "Professor: %s %s"
 				, this.getCourseCode()
 				, this.getCourseTitle()
-				, this.getProfessor().getFirstName()
-				, getProfessor().getLastName());
+				, this.getProfessor() !=null?this.getProfessor().getFirstName():"" //professor could be null
+				, this.getProfessor() !=null?this.getProfessor().getLastName():"");
 		
 		return string;
 		
