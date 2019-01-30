@@ -1,6 +1,7 @@
 package shafiq.ur.rehman.asgn2.test;
 //Test Driver
 import java.util.Collection;
+import java.util.Scanner;
 
 import shafiq.ur.rehman.asgn2.data.CourseCatalog;
 import shafiq.ur.rehman.asgn2.data.CourseManager;
@@ -122,5 +123,7 @@ public class LocalTester {
 		
 		System.out.println();
 		System.out.println("tests complete");
+		//export > executable jar > Launch configuration > select file w main() > run as 'java -jar fileName.jar'
+		//System.out.println(new Scanner(System.in).next());
 	}
 }
