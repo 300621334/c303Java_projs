@@ -51,6 +51,7 @@ public class ClockService extends Application {
 	}
 
 	//http://localhost:8088/YourNameAsgn3/clock/time
+	//by default display MEDIUM
 	@GET
 	@Path("time")
 	public String getTime() {
@@ -65,9 +66,9 @@ public class ClockService extends Application {
 		}
 	}
 	
-	//http://localhost:8088/YourNameAsgn3/clock/time/SHORT
+	//http://localhost:8088/YourNameAsgn3/clock/formated-time/SHORT
 	@GET
-	@Path("time/{format}")
+	@Path("formated-time/{format}")
 	public String getTime(@PathParam("format") String format) {
 		ClockBean clockBean = new ClockBean();
 		try {
@@ -80,9 +81,9 @@ public class ClockService extends Application {
 		}
 	}
 	
-	//http://localhost:8088/YourNameAsgn3/clock/time?format=long
+	//http://localhost:8088/YourNameAsgn3/clock/formated-time?format=long
 	@GET
-	@Path("time")
+	@Path("formated-time")
 	@Consumes(MediaType.TEXT_PLAIN)
 	public String getTime(@Context UriInfo uriInfo) {
 		
