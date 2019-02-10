@@ -39,7 +39,7 @@ public class FileCounter extends HttpServlet
 		}
 	}
     	
-//before destroying this, save visit-count to file    	
+//before destroying this, save visit-count to file or release any resources, such as a database connection 	
 @Override
 		public void destroy() 
 		{

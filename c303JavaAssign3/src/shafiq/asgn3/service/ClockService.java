@@ -18,6 +18,13 @@ import com.sun.org.apache.bcel.internal.generic.RETURN;
 import startup.rest.clock.ClockBean;
 import startup.rest.clock.DateTimeFormatException;
 
+/*Group#3 members:
+ Shafiq-Ur-Rehman
+ Sahil Mahajan
+ Atul Sharma
+ Nirojan Jeyandhran
+ */
+ 
 //URIs begin http://localhost:8088/contextRoot/clock 
 @ApplicationPath("/")
 @Path("clock")
@@ -56,6 +63,7 @@ public class ClockService extends Application {
 	@Path("time")
 	public String getTime() {
 		ClockBean clockBean = new ClockBean();
+		//"checked" exception (i.e., extend Exception but not RuntimeException ) is the one that clients are required to handle at compile time.
 		try {
 			return clockBean.getCurrentTimeFormatted("MEDIUM");
 		} 
