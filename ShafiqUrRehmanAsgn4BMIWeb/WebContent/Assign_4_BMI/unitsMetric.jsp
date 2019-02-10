@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="CalcBmiServlet" method="post">
-		<label>Height (meters)</label><input name="heightMeters" type="text" value="" /><p/>
+		<label>Height (maters)</label><input name="heightMeters" type="text" value="" /><p/>
 		<label>Weight (kilograms)</label><input name="weightKilos" type="text" value="" /><p/>
 		<input type="submit" value="Calculate BMI" />
 		

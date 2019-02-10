@@ -27,6 +27,7 @@ aaaa
 
 <p>${param.heightInches}</p>
 <p>${param.weightPounds}</p>
+<p>BMI is ${bmi}</p>
 
 
 
