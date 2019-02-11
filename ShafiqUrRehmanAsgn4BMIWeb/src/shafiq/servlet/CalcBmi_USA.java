@@ -40,16 +40,21 @@ public class CalcBmi_USA extends HttpServlet {
 	
 	BMICalculator bmiCalculator = new BMICalculator();
 	Double bmi = 0.0;
+	String desc = "";
+
 
 	try {
 		bmiCalculator.setHeight(MetricConverter.inchToMeter(heightInches));
 		bmiCalculator.setWeight(MetricConverter.poundToKg(weightPounds));
 		bmi = bmiCalculator.calculateBMI();
+		desc = bmiCalculator.getDescription(bmi);
 	} catch (ImpossibleWeightException | ImpossibleHeightException e) {
 		e.printStackTrace();
 	}
 	
 	request.setAttribute ("bmi", bmi);
+	request.setAttribute ("desc", desc);
+
 	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Assign_4_BMI/calcBMI_USA.jsp");
 	dispatcher.forward(request, response);
 	}

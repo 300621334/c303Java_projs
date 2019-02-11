@@ -13,7 +13,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> 
 
 <body>
-aaaa
+
 <%-- <c:if test="${param.heightMeters eq '' or param.weightKilos eq ''}">
 	<c:set var="heightMeters" value="${param.heightMeters}" />
 	<c:set var="weightKilos" value="${param.weightKilos}" />
@@ -23,10 +23,16 @@ aaaa
 		
 	</c:redirect>
 </c:if> --%>
+<h2>
+	Shafiq calculated the BMI to be: <fmt:formatNumber type="number" maxFractionDigits="1" value="${bmi}" />
+</h2>
 
+<p>For a person os <strong>height: ${param.heightMeters} meters</strong> and <strong>weight of ${param.weightKilos} kilograms</strong></p>
 
-<p>${param.heightMeters}</p>
-<p>${param.weightKilos}</p>
-<p>BMI is: ${bmi}</p>
+<h4>What's the meaning of my BMI result?</h4>
+<p>${desc}</p>
+
+<p><a href="${pageContext.request.contextPath}/Assign_4_BMI/unitsMetric.jsp">Try Again</a> (with same units) or 
+<a href="${pageContext.request.contextPath}/Assign_4_BMI/index.html">Start Over</a> to change units.</p>
 </body>
 </html>
