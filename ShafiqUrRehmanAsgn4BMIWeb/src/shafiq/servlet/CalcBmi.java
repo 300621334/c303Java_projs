@@ -22,15 +22,17 @@ public class CalcBmi extends HttpServlet
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException 
 	{
-		Double heightMeters = Double.parseDouble(request.getParameter("heightMeters"));
-		Double weightKilos = Double.parseDouble(request.getParameter("weightKilos"));
-
+		Double heightMeters = 0.0;
+		Double weightKilos = 0.0;
 		BMICalculator bmiCalculator = new BMICalculator();
 		Double bmi = 0.0;
 		String desc = "";
 
 		try 
-		{
+		{		
+			heightMeters = Double.parseDouble(request.getParameter("heightMeters"));//must be in try-catch to catch NaN
+			weightKilos = Double.parseDouble(request.getParameter("weightKilos"));
+			
 			bmiCalculator.setHeight(heightMeters);
 			bmiCalculator.setWeight(weightKilos);
 			bmi = bmiCalculator.calculateBMI();
@@ -38,7 +40,14 @@ public class CalcBmi extends HttpServlet
 		} 
 		catch (ImpossibleWeightException | ImpossibleHeightException e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
+			String errMsg =  "Value(s) provided are not reasonable for adults!";
+			setErrMsgForRedirect(request, response, heightMeters, weightKilos, errMsg);
+		}
+		catch (NumberFormatException e)//if empty ht/wt or a NaN entered 
+		{
+			String errMsg = "Please enter numbers only and don't leave fields blank!";
+			setErrMsgForRedirect(request, response, heightMeters, weightKilos, errMsg);
 		}
 
 		request.setAttribute("bmi", bmi);
@@ -46,6 +55,23 @@ public class CalcBmi extends HttpServlet
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Assign_4_BMI/calcBMI.jsp");
 		dispatcher.forward(request, response);
+	}
+
+	//fn to redirect back to form w errMsg in case of exceptions
+	private void setErrMsgForRedirect(HttpServletRequest request, HttpServletResponse response, Double heightMeters, Double weightKilos, String errMsg) 
+			throws ServletException, IOException 
+	{
+		String uri = ""; 
+		uri = request.getRequestURI();//this includes the path for this very servelet
+		uri = request.getContextPath();//this does NOT... rather only till name of the app
+		
+		request.setAttribute("errMsg", errMsg);
+		request.setAttribute("heightMeters", heightMeters);//send bk what user entered to prePopulate fields
+		request.setAttribute("weightKilos", weightKilos);
+		
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Assign_4_BMI/unitsMetric.jsp");
+		dispatcher.forward(request, response);
+		//response.sendRedirect( uri + "/Assign_4_BMI/unitsMetric.jsp");//a GET is requested//unable to pass params so use distapcher
 	}
 
 }

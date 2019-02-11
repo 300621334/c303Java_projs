@@ -8,11 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<p style="color:red">${errMsg}</p>
 	<form action="CalcBmiServlet" method="post">
-		<label>Height (maters)</label><input name="heightMeters" type="text" value="" /><p/>
-		<label>Weight (kilograms)</label><input name="weightKilos" type="text" value="" /><p/>
+	
+		<label>Height (meters)</label><input name="heightMeters" type="text" value="${heightMeters}" /><p/>
+		<label>Weight (kilograms)</label><input name="weightKilos" type="text" value="${weightKilos}" /><p/>
 		<input type="submit" value="Calculate BMI" />
 		
 	</form>
+	
 </body>
 </html>

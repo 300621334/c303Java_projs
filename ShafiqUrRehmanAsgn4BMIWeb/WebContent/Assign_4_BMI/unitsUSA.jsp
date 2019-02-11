@@ -9,9 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<p style="color:red">${errMsg}</p>
+
 	<form action="CalcBmiServletUSA" method="post">
-		<label>Height (inches)</label><input name="heightInches" type="text" value="" /><p/>
-		<label>Weight (pounds)</label><input name="weightPounds" type="text" value="" /><p/>
+		<label>Height (inches)</label><input name="heightInches" type="text" value="${heightInches}" /><p/>
+		<label>Weight (pounds)</label><input name="weightPounds" type="text" value="${weightPounds}" /><p/>
 		<input type="submit" value="Calculate BMI" />
 		
 	</form>
