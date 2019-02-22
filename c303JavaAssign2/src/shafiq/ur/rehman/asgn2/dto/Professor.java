@@ -25,7 +25,7 @@ public class Professor {
 	}
 
 	public void setFirstName(String firstName) throws ImproperInputException {
-		if (firstName == null || firstName.isEmpty()) {
+		if (firstName == null || firstName.isEmpty()) {//=> same as "".equals(firstName) //if fName is NULL then it won't even get to .isEmpty() & rather throw nullPointerExcep.
 			throw new ImproperInputException("Proressor must have a first name");
 		}
 		this.firstName = firstName;

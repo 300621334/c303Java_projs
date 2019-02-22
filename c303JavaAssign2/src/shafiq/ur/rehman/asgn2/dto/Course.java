@@ -44,6 +44,9 @@ public class Course implements Serializable {
 		this.professor = professor;
 	}
 
+	//Java doesn't support default-values for params. Alt is Builder-Pattern (but that's equally wordy!!!): 
+	//https://stackoverflow.com/questions/222214/managing-constructors-with-many-parameters-in-java/222295#222295
+	//https://stackoverflow.com/a/997883
 	public Course( String courseCode) throws ImproperInputException {
 		super();
 		setCourseCode(courseCode);
