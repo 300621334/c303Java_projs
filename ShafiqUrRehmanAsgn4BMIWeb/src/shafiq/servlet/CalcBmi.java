@@ -63,7 +63,7 @@ public class CalcBmi extends HttpServlet
 	{
 		String uri = ""; 
 		uri = request.getRequestURI();//this includes the path for this very servelet
-		uri = request.getContextPath();//this does NOT... rather only till name of the app
+		uri = request.getContextPath();//this does NOT... rather only till name of the app i.e. Context-Root
 		
 		request.setAttribute("errMsg", errMsg);
 		request.setAttribute("heightMeters", heightMeters);//send bk what user entered to prePopulate fields
@@ -71,7 +71,7 @@ public class CalcBmi extends HttpServlet
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Assign_4_BMI/unitsMetric.jsp");
 		dispatcher.forward(request, response);
-		//response.sendRedirect( uri + "/Assign_4_BMI/unitsMetric.jsp");//a GET is requested//unable to pass params so use distapcher
+		//response.sendRedirect( uri + "/Assign_4_BMI/unitsMetric.jsp");//a GET is requested//unable to pass params (.setAttribute) so use distapcher
 	}
 
 }
