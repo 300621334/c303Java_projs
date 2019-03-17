@@ -60,27 +60,25 @@ public class order_form extends HttpServlet {
 		{
 			if(mapEntry.getKey().contains("itemId_"))
 			{
-				int itemNo = Integer.parseInt(mapEntry.getKey().substring(7));
+				String itemNoFromMapStr = mapEntry.getKey().substring(7);
+				int itemNoFromMap = Integer.parseInt(itemNoFromMapStr);
 				
 				for(int i=0;i<menuItems.size();i++/*MenuItem item : menuItems*/)
 				{
 					int quantity = Integer.parseInt(mapEntry.getValue()[0]);
+					int itemNoFromMenu = menuItems.get(i).getItemNo();
 					
-					if(menuItems.get(i).getItemNo() == itemNo /*Integer.parseInt(mapEntry.getKey().substring(7))*/)
+					if(itemNoFromMenu == itemNoFromMap /*Integer.parseInt(mapEntry.getKey().substring(7))*/)
 					{
 						menuItems.get(i).setQuantity(quantity);
 					}
 				}
-				
-				//pass menu items to order-form.JSP:
+			}
+		}
+		
+			//pass menu items to order-form.JSP:
 				request.setAttribute("menuItems", menuItems);
 				request.setAttribute("orderId", orderId);
 				request.getRequestDispatcher("/summary.jsp").forward(request, response);
-				
-				
-				
-			}
-		}
 	}
-
 }

@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
@@ -22,18 +24,12 @@ Your order ID is: <input value="${orderId}" name="orderId" id="orderId" />
 		<td>${item.itemDesc}</td>
 		<td>${item.itemPrice}</td>
 		<td>${item.quantity}</td>
-	</td>
 	</tr>
 	</c:forEach>
-	
-	
-		
-		<input type="submit" value="Confirm" />
+</table>
+	<input type="submit" value="Confirm" />
 		<input type="submit" value="Cancel" formaction="/ShafiqUrRehmanAsgn5MenuWeb/order_form" />
 		To EDIT, use the BACK button
-	
-</table>
-	
 </form>
 </body>
 </html>
