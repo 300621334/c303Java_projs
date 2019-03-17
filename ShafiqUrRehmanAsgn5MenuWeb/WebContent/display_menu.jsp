@@ -4,7 +4,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
 <html>
 <head>
 <!-- the JSTL core library --> 
@@ -15,8 +14,6 @@
 </head>
 <body>
 	<%
-	//ArrayList<MenuItem> menuItems = (ArrayList<MenuItem>)request.getAttribute("menuItems");
-	//err:  java.util.LinkedList cannot be cast to java.util.ArrayList
 	List<MenuItem> menuItems = (List) request.getAttribute("menuItems");
 	for(MenuItem item : menuItems)
 	{

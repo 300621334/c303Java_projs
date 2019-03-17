@@ -39,7 +39,6 @@ Your order ID is: <input value="${orderId}" name="orderId" id="orderId" />
 	</tr>
 </table>
 	<input name="Confirm" type="submit" value="Confirm" />
-	<!-- <input type="submit" value="Cancel" formaction="/ShafiqUrRehmanAsgn5MenuWeb" /> -->
 	<input name="Cancel" type="submit" value="Cancel" />
 		
 		To EDIT, use the BACK button
