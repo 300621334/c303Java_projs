@@ -62,7 +62,7 @@ public class display_menu extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		
-		String username = "";//get from web-form 'display-menu'
+		String username = request.getParameter("username");//get from web-form 'display-menu.jsp'
 		String orderId = username + getServletContext().getAttribute("lastNum");//gen unique ID
 		incrementOrderNum();//inc "lastNum" by one
 		//retrieve menu:
@@ -71,6 +71,7 @@ public class display_menu extends HttpServlet {
 		menuItems = menuManager.getMenu();
 		//pass menu items to order-form.JSP:
 		request.setAttribute("menuItems", menuItems);
+		request.setAttribute("orderId", orderId);
 		request.getRequestDispatcher("/order-form.jsp").forward(request, response);
 	}//doPost()
 

@@ -11,14 +11,18 @@
  tr, td { 
  border: 1px solid black;
  }
+ th{font-weight:bold;}
+ input[name="orderId"]{border:none; font-weight:bold; color:blue;}
 </style>
 </head>
 <body>
-order-form...
 
-<table border="1">
+
+<form action="/ShafiqUrRehmanAsgn5MenuWeb/order_form" method="post">
+Your order ID is: <input value="${orderId}" name="orderId" id="orderId" />
+	<table border="1">
 	<tr>
-		<td>Number</td><td>Description</td><td>Price</td><td>Quantity</td>
+		<th>Number</th><th>Description</th><th>Price</th><th>Quantity</th>
 	</tr>
 	
 	<c:forEach items="${menuItems}" var="item">
@@ -26,9 +30,32 @@ order-form...
 		<td>${item.itemNo}</td>
 		<td>${item.itemDesc}</td>
 		<td>${item.itemPrice}</td>
-		<%-- <td>${item.quantity}</td> --%>
+		<td>
+		
+			<select name="itemId_${item.itemNo}">
+				<option value="0"> </option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
+		
+		</td>
 	</tr>
 	</c:forEach>
+	
+	<tr>
+		<th></th><th></th><th></th>
+		<th><input type="submit" value="Order" /></th>
+	</tr>
 </table>
+	
+</form>
 </body>
 </html>
