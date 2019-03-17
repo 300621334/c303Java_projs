@@ -19,12 +19,17 @@ Your order ID is: <input value="${orderId}" name="orderId" id="orderId" />
 	</tr>
 	
 	<c:forEach items="${menuItems}" var="item">
-	<tr>
+	
+	<%-- <c:if test="${not empty item.quantity}"> --%>
+	<c:if test="${item.quantity gt 0}">
+		<tr>
 		<td>${item.itemNo}</td>
 		<td>${item.itemDesc}</td>
 		<td>${item.itemPrice}</td>
 		<td>${item.quantity}</td>
-	</tr>
+	</tr>	
+	</c:if>
+	
 	</c:forEach>
 </table>
 	<input type="submit" value="Confirm" />
