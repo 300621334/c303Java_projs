@@ -18,7 +18,7 @@
 <body>
 
 
-<form action="/ShafiqUrRehmanAsgn5MenuWeb/order_form" method="post">
+<form action="${pageContext.request.contextPath}/order_form" method="post">
 Your order ID is: <input value="${orderId}" name="orderId" id="orderId" />
 	<table border="1">
 	<tr>

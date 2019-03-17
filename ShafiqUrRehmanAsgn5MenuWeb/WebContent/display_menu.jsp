@@ -22,7 +22,7 @@
 		out.print("<option value='" + item + "'>" + item + "</option>");
 	}
 	%>
-<form method="post">
+<form method="post" action="${pageContext.request.contextPath}/">
 	Name: <input required="required" id="username" name="username" type="text"  />
 	Click to place order: <input value="Place Order" type="submit"/>
 </form>
