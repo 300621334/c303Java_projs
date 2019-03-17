@@ -11,13 +11,14 @@
 <body>
 summary...
 
-<form action="/ShafiqUrRehmanAsgn5MenuWeb/thanks" method="post">
+<form action="${pageContext.request.contextPath}/thanks" method="post">
 Your order ID is: <input value="${orderId}" name="orderId" id="orderId" />
 	<table border="1">
 	<tr>
-		<th>Number</th><th>Description</th><th>Price</th><th>Quantity</th>
+		<th>Number</th><th>Description</th><th>Price</th><th>Quantity</th><th>Cost</th>
 	</tr>
 	
+	<c:set var="totalCost" value="${0}" />
 	<c:forEach items="${menuItems}" var="item">
 	
 	<%-- <c:if test="${not empty item.quantity}"> --%>
@@ -27,13 +28,20 @@ Your order ID is: <input value="${orderId}" name="orderId" id="orderId" />
 		<td>${item.itemDesc}</td>
 		<td>${item.itemPrice}</td>
 		<td>${item.quantity}</td>
+		<td>$${item.quantity * item.itemPrice}</td>
+		<c:set var="totalCost" value="${totalCost + (item.quantity * item.itemPrice)}" />
 	</tr>	
 	</c:if>
 	
 	</c:forEach>
+	<tr>
+		<th></th><th>TOTAL cost of order</th><th></th><th></th><th>$${totalCost}</th>
+	</tr>
 </table>
-	<input type="submit" value="Confirm" />
-		<input type="submit" value="Cancel" formaction="/ShafiqUrRehmanAsgn5MenuWeb/order_form" />
+	<input name="Confirm" type="submit" value="Confirm" />
+	<!-- <input type="submit" value="Cancel" formaction="/ShafiqUrRehmanAsgn5MenuWeb" /> -->
+	<input name="Cancel" type="submit" value="Cancel" />
+		
 		To EDIT, use the BACK button
 </form>
 </body>
