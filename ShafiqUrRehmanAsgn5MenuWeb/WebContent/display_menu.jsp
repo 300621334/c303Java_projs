@@ -25,7 +25,7 @@
 	%>
 <form method="post">
 	Name: <input id="username" name="username" type="text"  />
-	Click to place order: <input value="Place Order" type="button"/>
+	Click to place order: <input value="Place Order" type="submit"/>
 </form>
 </body>
 </html>
